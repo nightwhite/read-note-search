@@ -1,0 +1,20 @@
+# GitHub Template Repository Configuration
+# This file helps GitHub identify this as a template repository
+
+name: Template Cleanup
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  template-cleanup:
+    if: github.repository != 'your-username/ai-dev-scaffold'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Cleanup template files
+        run: |
+          # Remove template-specific files after template usage
+          rm -f .github/template-cleanup.yml
+          echo "Template cleanup completed"
